@@ -2,7 +2,7 @@
 
 namespace Restserver\Security;
 
-class Security {
+class Security extends \CI_Controller {
     
     /**
      * Constructor for the Security class
@@ -14,7 +14,8 @@ class Security {
      */
     public function __construct($config = 'rest')
     {
-
+        parent::__construct();
+        $this->load->config($config_file, FALSE, TRUE);
     }
 
     /**
@@ -24,7 +25,7 @@ class Security {
      * @author Chris Kacerguis
      * @return bool
      */
-    public function isWhitelisted($ip)
+    public function is_whitelisted($ip)
     {
 
     }
@@ -36,22 +37,9 @@ class Security {
      * @author Chris Kacerguis
      * @return bool
      */
-    public function isBlacklisted($id)
+    public function is_blacklisted($id)
     {
 
     }
-
-    /**
-     * checks to see if we have a valid session
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return bool
-     */
-    public function isSecure()
-    {
-
-    }
-
 
 }

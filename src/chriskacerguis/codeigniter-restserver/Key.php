@@ -12,7 +12,7 @@ namespace Restserver\Key;
  * @version         4.0.0
  */
 
-class Key {
+class Key extends \CI_Controller {
 
     /**
      * Constructor for the Key class
@@ -24,7 +24,8 @@ class Key {
      */
     public function __construct($config = 'rest')
     {
-
+        parent::__construct();
+        $this->load->config($config_file, FALSE, TRUE);
     }
 
     /**

@@ -2,11 +2,7 @@
 
 namespace Restserver\Log;
 
-class Log {
-
-    var $requestStart   = 0;
-    var $requestEnd     = 0;
-    var $requestTotal   = 0;
+class Log extends \CI_Controller {
 
     /**
      * Constructor for the Log class
@@ -18,106 +14,24 @@ class Log {
      */
     public function __construct($config = 'rest')
     {
+        parent::__construct();
+        $this->load->config($config_file, FALSE, TRUE);
         // Is logged enabled?
         // How are we logging (file, table)
         // if table, does it exist, make it if needed
     }
 
     /**
-     * Create the table in SQL if it does not exist
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return bool
-     */
-    private function createTable()
-    {
-
-    }
-
-
-    /**
-     * Check to see if we have logging enabled
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return bool
-     */
-    private function enabled()
-    {
-
-    }
-
-    /**
-     * Create an entry in the db log table
-     *
-     * @access private
-     * @author Chris Kacerguis
-     * @return bool
-     */
-    private function logToDB()
-    {
-
-    }
-
-    /**
-     * Create an entry in the file log
-     *
-     * @access private
-     * @author Chris Kacerguis
-     * @return bool
-     */
-    private function logToFile()
-    {
-
-    }
-
-    /**
-     * check to see if we have logging enabled
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return bool
-     */
-    public function entry()
-    {
-        // Create an entry in the log
-    }
-
-    /**
-     * get the time in microseconds at the start of the request
+     * log the request (if enable)
      *
      * @access public
      * @author Chris Kacerguis
      * @return void
      */
-    public function startRequest()
+    public function save()
     {
-        $this->requestStart = microtime(true);
+        return true;
     }
 
-    /**
-     * get the time in microseconds at the end of the request
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return void
-     */
-    public function endRequest()
-    {
-        $this->requestEnd = microtime(true);
-    }
-
-    /**
-     * get the total time of the request in microseconds
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return void
-     */
-    public function totalRequest()
-    {
-        $this->requestTotal = $this->requestStart - $this->requestEnd;
-    }
 
 }

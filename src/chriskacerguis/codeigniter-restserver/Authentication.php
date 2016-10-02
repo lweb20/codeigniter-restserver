@@ -10,7 +10,7 @@ namespace Restserver\Authentication;
  * @version         4.0.0
  */
 
-class Authentication {
+class Authentication extends \CI_Controller {
 
 
     /**
@@ -23,17 +23,18 @@ class Authentication {
      */
     public function __construct($config = 'rest')
     {
-
+        parent::__construct();
+        $this->load->config($config_file, FALSE, TRUE);
     }
 
     /**
-     * key based authentication
+     * api key based authentication
      *
      * @access public
      * @author Chris Kacerguis
      * @return bool
      */
-    public function key($key)
+    public function api_key($key)
     {
         // does key exist?
         // is it enabled
@@ -52,7 +53,7 @@ class Authentication {
     }
 
     /**
-     * session based authentication 
+     * session based authentication (JWT)
      *
      * @access public
      * @author Chris Kacerguis

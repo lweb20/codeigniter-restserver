@@ -1,11 +1,11 @@
 <?php
 
-namespace Restserver\Limits;
+namespace Restserver\Limit;
 
-class Limits {
+class Limit extends \CI_Controller {
 
     /**
-     * Constructor for the Limits class
+     * Constructor for the Limit class
      *
      * @access public
      * @author Chris Kacerguis
@@ -14,73 +14,46 @@ class Limits {
      */
     public function __construct($config = 'rest')
     {
-
+        parent::__construct();
+        $this->load->config($config_file, FALSE, TRUE);
     }
 
     /**
-     * Main method for the limits class.
+     * Check to see if the limit has been hit
      *
      * @access public
      * @author Chris Kacerguis
      * @return bool Indicates of the limit has been reached  
      */
-    public function check()
+    private function check()
     {
-        // If limits is disabled, then just return true
-        if (!$this->config->item('rest_enable_limits'))
+        if ($this->ip() == false || $this->api_key == false)
         {
-            return true;
+            return false;
         }
-
-        // If we are limiting via API Key
-        if ($this->config->item('rest_limit_api_key'))
-        {
-            $at_limit = $this->check_api_key();
-        } 
-        
-        // If we are limiting via IP 
-        if ($this->config->item('rest_limit_ip_address'))
-        {
-            $at_limit = $this->check_ip_address();
-        }
-
-        // Increment the counter
-        $this->increase();
-        return $at_limit;
+        return true;
     }
 
     /**
-     * Checks to see if the IP address is at the MAX limit
+     * Limit by IP address
      *
      * @access public
      * @author Chris Kacerguis
      * @return bool Indicates of the limit has been reached  
      */
-    private function check_ip_address()
+    private function ip()
     {
 
     }
 
     /**
-     * Checks to see if the API Key is at the MAX limit
+     * Limit by API key address
      *
      * @access public
      * @author Chris Kacerguis
      * @return bool Indicates of the limit has been reached  
      */
-    private function check_api_key()
-    {
-
-    }
-
-    /**
-     * Increase the limit counter of the user
-     *
-     * @access public
-     * @author Chris Kacerguis
-     * @return bool 
-     */
-    private function increase()
+    private function api_key()
     {
 
     }
