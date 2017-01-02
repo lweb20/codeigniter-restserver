@@ -1,6 +1,6 @@
 {
 	"description": "REST Server for the CodeIgniter framework",
-	"name": "chriskacerguis/codeigniter-restserver",
+	"name": "lweb20/codeigniter-restserver",
 	"type": "project",
 	"homepage": "https://github.com/chriskacerguis/codeigniter-restserver",
 	"authors": [
