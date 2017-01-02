@@ -29,6 +29,8 @@ When your controller extends from `REST_Controller`, the method names will be ap
 This allows you to implement a RESTful interface easily:
 
 ```php
+use Restserver\Libraries;
+
 class Books extends REST_Controller
 {
   public function index_get()
